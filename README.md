@@ -2,13 +2,15 @@
 
 My ERPNext AI Assistant
 
+独立仓库为 [yueweiit/deeplinkerp-ai_assistant](https://github.com/yueweiit/deeplinkerp-ai_assistant)，开发主线和 PR 目标均为 `main`。Frappe App 名保持 `ai_assistant`。
+
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch main
+bench get-app --branch main ai_assistant https://github.com/yueweiit/deeplinkerp-ai_assistant.git
 bench install-app ai_assistant
 ```
 
