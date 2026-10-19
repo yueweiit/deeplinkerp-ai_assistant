@@ -1,3 +1,6 @@
+
+from frappe import _
+
 import frappe
 import requests
 import json
@@ -51,7 +54,7 @@ def generate_financial_voucher_report(file_url, platform="qwen", model_id=None):
     user_roles = frappe.get_roles(frappe.session.user)
     is_boss = frappe.session.user == "Administrator" or "Administrator" in user_roles or "System Manager" in user_roles or "Accounts Manager" in user_roles
     if not is_boss:
-        frappe.throw("当前账号无权生成财务凭证报表。")
+        frappe.throw(_("当前账号无权生成财务凭证报表。"))
 
     provider = get_ai_provider_config(platform)
     selected_model = provider.get("model") or model_id or provider.get("default_model")
@@ -78,7 +81,7 @@ def build_financial_voucher_response(tool_result, ai_classifier=None, provider_l
         "reply": tool_result["text"],
         "action_button": {
             "type": "download_file",
-            "label": "⬇️ 下载财务报表",
+            "label": _("⬇️ 下载财务报表"),
             "url": tool_result.get("file_url"),
             "file_name": tool_result.get("file_name"),
         },
@@ -263,10 +266,9 @@ def _handle_tool_call(response_message, payload, url, headers, provider, selecte
         "reply": final_reply,
         "action_button": {
             "type": "export_excel",
-            "label": "⬇️ Export Data / 导出数据",
+            "label": _("⬇️ Export Data / 导出数据"),
             "data": export_data,
             "file_prefix": tool_file_prefix(function_name),
         },
         "logs": ["后端 Python 接口触发成功！", f"大模型调用了：{function_name}。"],
     }
-

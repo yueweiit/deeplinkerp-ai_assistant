@@ -1,5 +1,8 @@
 from __future__ import annotations
 
+from frappe import _
+
+
 import os
 import re
 import uuid
@@ -237,10 +240,7 @@ def _find_header_row(ws, header_classifier=None, merged_lookup=None):
     detail = "\n".join(preview) or "前 50 行未发现非空候选表头。"
     best_names = ", ".join(sorted(best_columns)) or "无"
     raise ValueError(
-        "未找到可用的银行交易明细表头。已尝试同义词匹配和模糊匹配，"
-        f"最佳候选行为第 {best_row or '-'} 行，已识别字段：{best_names}。\n"
-        "请确认文件至少包含日期列、收入或支出金额列，以及余额/对方单位/摘要中的任意两类信息。\n"
-        f"扫描摘要：\n{detail}"
+        _("未找到可用的银行交易明细表头。已尝试同义词匹配和模糊匹配，最佳候选行为第 {0} 行，已识别字段：{1}。\n请确认文件至少包含日期列、收入或支出金额列，以及余额/对方单位/摘要中的任意两类信息。\n扫描摘要：\n{2}").format(best_row or '-', best_names, detail)
     )
 
 
@@ -279,7 +279,7 @@ def parse_bank_transactions(source_path, header_classifier=None):
         })
 
     if not transactions:
-        raise ValueError("Excel 中没有识别到有效的转入/转出交易记录。")
+        raise ValueError(_("Excel 中没有识别到有效的转入/转出交易记录。"))
     return transactions
 
 
@@ -729,13 +729,13 @@ def validate_balance_sheet_totals(trial_balance):
 def _resolve_source_path(file_url_or_name):
     file_url_or_name = _clean(file_url_or_name)
     if not file_url_or_name:
-        raise ValueError("缺少上传文件路径。")
+        raise ValueError(_("缺少上传文件路径。"))
     if file_url_or_name.startswith(("/files/", "/private/files/")) or "/" not in file_url_or_name:
         path = get_file_path(file_url_or_name)
     else:
         path = file_url_or_name
     if not path or not os.path.exists(path):
-        raise FileNotFoundError(f"找不到上传文件：{file_url_or_name}")
+        raise FileNotFoundError(_("找不到上传文件：{0}").format(file_url_or_name))
     return path
 
 

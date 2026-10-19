@@ -73,84 +73,84 @@
 <div class="ai-app-wrapper">
     <div class="ai-chat-container">
         <div class="ai-left-panel">
-            <div class="panel-header" data-i18n="ai_config_title">🤖 AI 引擎配置</div>
+            <div class="panel-header" data-i18n="ai_config_title">{%= __("🤖 AI 引擎配置") %}</div>
             <div class="ai-setting-item">
-                <label data-i18n="lbl_platform">选择 AI 平台</label>
+                <label data-i18n="lbl_platform">{%= __("选择 AI 平台") %}</label>
                 <select id="ai-platform">
                     <option value="deepseek">DeepSeek</option>
-                    <option value="qwen" selected>Qwen 通义千问</option>
-                    <option value="glm4">GLM-4 智谱</option>
+                    <option value="qwen" selected>{%= __("Qwen 通义千问") %}</option>
+                    <option value="glm4">{%= __("GLM-4 智谱") %}</option>
                 </select>
             </div>
-            <div class="ai-setting-item"><label data-i18n="lbl_url">Base URL 接口地址</label><input type="text" id="ai-base-url" value="https://dashscope.aliyuncs.com/compatible-mode/v1" readonly></div>
-            <div class="ai-setting-item"><label data-i18n="lbl_model">调用模型 ID</label><input type="text" id="ai-model-id" value="qwen-plus" readonly></div>
+            <div class="ai-setting-item"><label data-i18n="lbl_url">{%= __("Base URL 接口地址") %}</label><input type="text" id="ai-base-url" value="https://dashscope.aliyuncs.com/compatible-mode/v1" readonly></div>
+            <div class="ai-setting-item"><label data-i18n="lbl_model">{%= __("调用模型 ID") %}</label><input type="text" id="ai-model-id" value="qwen-plus" readonly></div>
             <hr class="ai-panel-divider">
-            <div class="panel-header" data-i18n="context_title">📍 当前业务上下文</div>
+            <div class="panel-header" data-i18n="context_title">{%= __("📍 当前业务上下文") %}</div>
             <div id="ai-context-status"></div>
 
             <hr class="ai-panel-divider is-dashed">
-            <div class="panel-header" data-i18n="nav_title">🚀 ERPNext 模块直达</div>
+            <div class="panel-header" data-i18n="nav_title">{%= __("🚀 ERPNext 模块直达") %}</div>
             <div class="module-nav-grid">
-                <a href="/app/selling" target="_blank" class="module-icon-btn" title="前往销售模块"><span class="module-icon">🏪</span><span class="module-icon-text" data-i18n="mod_selling">销售</span></a>
-                <a href="/app/buying" target="_blank" class="module-icon-btn" title="前往采购模块"><span class="module-icon">🛍️</span><span class="module-icon-text" data-i18n="mod_buying">采购</span></a>
-                <a href="/app/stock" target="_blank" class="module-icon-btn" title="前往库存模块"><span class="module-icon">📦</span><span class="module-icon-text" data-i18n="mod_stock">库存</span></a>
-                <a href="/app/projects" target="_blank" class="module-icon-btn" title="前往项目模块"><span class="module-icon">📊</span><span class="module-icon-text" data-i18n="mod_projects">项目</span></a>
-                <a href="/app/asset" target="_blank" class="module-icon-btn" id="nav-asset-btn" title="前往资产模块"><span class="module-icon">🏢</span><span class="module-icon-text" data-i18n="mod_assets">资产</span></a>
-                <a href="/app/manufacturing" target="_blank" class="module-icon-btn" title="前往生产模块"><span class="module-icon">🏭</span><span class="module-icon-text" data-i18n="mod_mfg">生产</span></a>
+                <a href="/app/selling" target="_blank" class="module-icon-btn" title="{%= __("前往销售模块") %}"><span class="module-icon">🏪</span><span class="module-icon-text" data-i18n="mod_selling">{%= __("销售") %}</span></a>
+                <a href="/app/buying" target="_blank" class="module-icon-btn" title="{%= __("前往采购模块") %}"><span class="module-icon">🛍️</span><span class="module-icon-text" data-i18n="mod_buying">{%= __("采购") %}</span></a>
+                <a href="/app/stock" target="_blank" class="module-icon-btn" title="{%= __("前往库存模块") %}"><span class="module-icon">📦</span><span class="module-icon-text" data-i18n="mod_stock">{%= __("库存") %}</span></a>
+                <a href="/app/projects" target="_blank" class="module-icon-btn" title="{%= __("前往项目模块") %}"><span class="module-icon">📊</span><span class="module-icon-text" data-i18n="mod_projects">{%= __("项目") %}</span></a>
+                <a href="/app/asset" target="_blank" class="module-icon-btn" id="nav-asset-btn" title="{%= __("前往资产模块") %}"><span class="module-icon">🏢</span><span class="module-icon-text" data-i18n="mod_assets">{%= __("资产") %}</span></a>
+                <a href="/app/manufacturing" target="_blank" class="module-icon-btn" title="{%= __("前往生产模块") %}"><span class="module-icon">🏭</span><span class="module-icon-text" data-i18n="mod_mfg">{%= __("生产") %}</span></a>
             </div>
 
         </div>
         <div class="ai-main-chat">
             <div class="chat-history" id="chat-history">
-                <div class="chat-message ai"><div class="chat-bubble" id="ai-greeting-text">您好老板！我是您的专属企业智能助手。全系金刚已就位，请下达指令！</div></div>
+                <div class="chat-message ai"><div class="chat-bubble" id="ai-greeting-text">{%= __("您好老板！我是您的专属企业智能助手。全系金刚已就位，请下达指令！") %}</div></div>
             </div>
             
             <div class="quick-actions">
                 
                 <div class="dropdown" id="finance-menu">
-                    <button class="quick-btn" data-i18n="menu_finance">💰 财务会计 ▾</button>
+                    <button class="quick-btn" data-i18n="menu_finance">{%= __("💰 财务会计 ▾") %}</button>
                     <div class="dropdown-content">
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_health" data-msg="生成一句话财务体检报告，看看公司总资产、负债和目前的利润" data-i18n="btn_fin_health">🏥 财务体检</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_overdue" data-msg="帮我查一下目前有哪些客户的账款逾期了？列出催款清单" data-i18n="btn_fin_overdue">🚨 智能催款</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_expense" data-msg="帮我查一下上个月各成本中心一共烧了多少钱？列出开销明细" data-i18n="btn_fin_expense">💸 成本追踪</a>
-                        <a href="#" class="quick-upload-source" data-i18n="btn_fin_voucher">🧾 财务凭证生成</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_health" data-msg="生成一句话财务体检报告，看看公司总资产、负债和目前的利润" data-i18n="btn_fin_health">{%= __("🏥 财务体检") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_overdue" data-msg="帮我查一下目前有哪些客户的账款逾期了？列出催款清单" data-i18n="btn_fin_overdue">{%= __("🚨 智能催款") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_fin_expense" data-msg="帮我查一下上个月各成本中心一共烧了多少钱？列出开销明细" data-i18n="btn_fin_expense">{%= __("💸 成本追踪") %}</a>
+                        <a href="#" class="quick-upload-source" data-i18n="btn_fin_voucher">{%= __("🧾 财务凭证生成") %}</a>
                     </div>
                 </div>
 
                 <div class="dropdown" id="asset-menu">
-                    <button class="quick-btn" data-i18n="menu_assets">🏢 固定资产 ▾</button>
+                    <button class="quick-btn" data-i18n="menu_assets">{%= __("🏢 固定资产 ▾") %}</button>
                     <div class="dropdown-content">
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_list" data-msg="帮我盘点一下公司现在的固定资产家底，总共值多少钱？列出资产清单" data-i18n="btn_ast_list">🏢 资产盘点</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_value" data-msg="查一下咱们目前最值钱的5个资产是什么？看看净值和贬值情况" data-i18n="btn_ast_value">📉 资产净值</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_leave" data-msg="有员工要离职了，查一下名下挂着哪些公司资产需要交接？" data-i18n="btn_ast_leave">🏃‍♂️ 离职交接</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_list" data-msg="帮我盘点一下公司现在的固定资产家底，总共值多少钱？列出资产清单" data-i18n="btn_ast_list">{%= __("🏢 资产盘点") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_value" data-msg="查一下咱们目前最值钱的5个资产是什么？看看净值和贬值情况" data-i18n="btn_ast_value">{%= __("📉 资产净值") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_ast_leave" data-msg="有员工要离职了，查一下名下挂着哪些公司资产需要交接？" data-i18n="btn_ast_leave">{%= __("🏃‍♂️ 离职交接") %}</a>
                     </div>
                 </div>
                 
                 <div class="dropdown">
-                    <button class="quick-btn" data-i18n="menu_stock">📦 进销存查询 ▾</button>
+                    <button class="quick-btn" data-i18n="menu_stock">{%= __("📦 进销存查询 ▾") %}</button>
                     <div class="dropdown-content">
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_sales_report" data-msg="帮我生成本月的销售月报及大客户贡献榜" data-i18n="btn_stk_sales_report">📊 销售月报</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_low" data-msg="帮我查一下当前库存数量低于 10 的商品" data-i18n="btn_stk_low">📦 低库存预警</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_so" data-msg="查看最近的销售订单" data-i18n="btn_stk_so">🛒 销售订单</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_si" data-msg="查看最近的销售发票" data-i18n="btn_stk_si">🧾 销售发票</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_pr" data-msg="查看最近的采购入库单" data-i18n="btn_stk_pr">📥 采购入库</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_dn" data-msg="查看最近的销售出库单" data-i18n="btn_stk_dn">🚚 销售出库</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_sq" data-msg="查看最近的供应商报价" data-i18n="btn_stk_sq">📝 供应商报价</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_po" data-msg="查看最近的采购订单" data-i18n="btn_stk_po">🛍️ 采购订单</a>
-                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_pi" data-msg="查看最近的采购发票" data-i18n="btn_stk_pi">🧾 采购发票</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_sales_report" data-msg="帮我生成本月的销售月报及大客户贡献榜" data-i18n="btn_stk_sales_report">{%= __("📊 销售月报") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_low" data-msg="帮我查一下当前库存数量低于 10 的商品" data-i18n="btn_stk_low">{%= __("📦 低库存预警") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_so" data-msg="查看最近的销售订单" data-i18n="btn_stk_so">{%= __("🛒 销售订单") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_si" data-msg="查看最近的销售发票" data-i18n="btn_stk_si">{%= __("🧾 销售发票") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_pr" data-msg="查看最近的采购入库单" data-i18n="btn_stk_pr">{%= __("📥 采购入库") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_dn" data-msg="查看最近的销售出库单" data-i18n="btn_stk_dn">{%= __("🚚 销售出库") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_sq" data-msg="查看最近的供应商报价" data-i18n="btn_stk_sq">{%= __("📝 供应商报价") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_po" data-msg="查看最近的采购订单" data-i18n="btn_stk_po">{%= __("🛍️ 采购订单") %}</a>
+                        <a href="#" class="quick-btn-menu" data-i18n-msg="msg_stk_pi" data-msg="查看最近的采购发票" data-i18n="btn_stk_pi">{%= __("🧾 采购发票") %}</a>
                     </div>
                 </div>
 
             </div>
             
             <div class="chat-input-area">
-                <input type="text" id="ai-user-input" class="chat-input" data-i18n="placeholder_input" placeholder="输入指令，按下发送...">
-                <button class="btn btn-primary send-btn" id="send-btn" data-i18n="btn_send">发送</button>
+                <input type="text" id="ai-user-input" class="chat-input" data-i18n="placeholder_input" placeholder="{%= __("输入指令，按下发送...") %}">
+                <button class="btn btn-primary send-btn" id="send-btn" data-i18n="btn_send">{%= __("发送") %}</button>
             </div>
         </div>
     </div>
     <div class="ai-log-panel">
-        <div class="log-header" id="log-panel-title">🖥️ 运行日志监控 (系统状态：正常)</div>
+        <div class="log-header" id="log-panel-title">{%= __("🖥️ 运行日志监控 (系统状态：正常)") %}</div>
         <div class="log-content" id="ai-log-content"></div>
     </div>
 </div>

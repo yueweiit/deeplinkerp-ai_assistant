@@ -20,3 +20,96 @@ GLM / BigModel,GLM / BigModel
 Base URL,URL base
 API Key,Clave API
 Model,Modelo
+Base URL 接口地址,Dirección de interfaz base URL
+DashScope/Qwen,DashScope/Qwen
+Excel 中没有识别到有效的转入/转出交易记录。,No se reconoció ninguna transacción de entrada/salida de transferencia válida en Excel.
+GLM-4,GLM-4
+GLM-4 智谱,GLM-4 Zhipu
+Qwen,Qwen
+Qwen 通义千问,Qwen Tongyi Qianwen
+YYYY-MM,YYYY-MM
+ai小助手,asistente de ia
+deepseek,deepseek
+glm4,glm4
+qwen,qwen
+⬇️ Export Data / 导出数据,⬇️ Exportar datos / Exportar datos
+⬇️ 下载财务报表,⬇️ Descargar estados financieros
+⬇️ 导出数据(Excel),⬇️ Exportar datos (Excel)
+供应商报价,Cotización Proveedor
+前往库存模块,Ir al módulo de inventario
+前往生产模块,Ir al módulo de producción
+前往资产模块,Ir al módulo de activos
+前往采购模块,Ir al módulo de compras
+前往销售模块,Ir al módulo de ventas
+前往项目模块,Ir al módulo del proyecto
+发送,enviar
+库存,Inventario
+当前账号无权生成财务凭证报表。,La cuenta corriente no tiene autoridad para generar el informe financiero Comprobante Contable.
+当前运行环境缺少 openpyxl，无法读取 Excel。请在 bench 环境安装 openpyxl。,El entorno de ejecución actual carece de openpyxl y no puede leer Excel. Instale openpyxl en el entorno del banco.
+当用户上传银行交易明细 Excel 并要求生成财务凭证、科目余额表、资产负债表或利润表时调用。必须把用户消息中的文件路径作为 file_url 传入。,"Se llama cuando el usuario carga detalles de transacciones bancarias en Excel y requiere la generación de Comprobante Contable financiero, balance de cuenta, Balance General o Estado de Resultados. La ruta del archivo en el mensaje de usuario debe pasarse como file_url."
+当用户要求查询公司固定资产、盘点家底、查看资产总值或资产清单时调用。不需要任何参数。,"Se llama cuando el usuario solicita consultar sobre los activos fijos de la empresa, hacer un inventario de la propiedad, ver el valor total de los activos o la lista de activos. No se requieren parámetros."
+当用户要求查询最值钱的资产、资产净值排行榜、资产贬值情况、剩余价值时调用。,"Se llama cuando el usuario solicita consultar los activos más valiosos, las clasificaciones del valor neto de los activos, la depreciación de los activos y el valor restante."
+当用户要求查询某个员工名下资产、离职交接资产核查、员工保管的设备时调用。,"Se llama cuando el usuario solicita consultar los activos a nombre de un empleado, la verificación de los activos después de la renuncia y el equipo que conserva el empleado."
+当用户要求查询某个成本中心的花销、支出、烧钱情况或各项开销明细时调用,"Se llama cuando el usuario solicita consultar los gastos, gastos, estado de quema de efectivo o varios detalles de gastos de un centro de costos."
+当用户要求查询财务体检、公司总资产、总负债、利润、亏损、财务基本盘时调用。不需要任何参数。,"Llamado cuando el usuario solicita consultar el examen físico financiero, los activos totales, los pasivos totales, las ganancias, las pérdidas y los fundamentos financieros de la empresa. No se requieren parámetros."
+当用户要求查询逾期账款或催款清单时调用,Se llama cuando el usuario solicita consultar cuentas vencidas o lista de reclamaciones
+当用户要求生成销售月报时调用,Llamado cuando el usuario solicita generar un informe de ventas mensual.
+当用户询问低库存预警时调用,Se llama cuando el usuario pregunta sobre alertas de inventario bajo.
+当用户询问供应商报价时调用,Se llama cuando el usuario consulta sobre la cotización de Proveedor.
+当用户询问采购入库时调用,Se llama cuando el usuario pregunta sobre compras en el almacén.
+当用户询问采购发票时调用,Llamado cuando el usuario consulta sobre una factura de compra.
+当用户询问采购订单时调用,Llamado cuando el usuario solicita Pedido de Compra
+当用户询问销售出库时调用,Llamado cuando el usuario solicita Nota de Entrega
+当用户询问销售发票时调用,Llamado cuando el usuario solicita una factura de venta.
+当用户询问销售订单时调用,Llamado cuando el usuario solicita Pedido de Venta
+您好老板！我是您的专属企业智能助手。全系金刚已就位，请下达指令！,"¡Hola jefe! Soy tu asistente inteligente empresarial exclusivo. Todos los Vajras están en su lugar, ¡por favor da la orden!"
+成本中心名称，例如 'jd-test',"Nombre del centro de costos, por ejemplo 'jd-test'"
+找不到上传文件：{0},Cargar archivo no encontrado: {0}
+"未找到可用的银行交易明细表头。已尝试同义词匹配和模糊匹配，最佳候选行为第 {0} 行，已识别字段：{1}。
+请确认文件至少包含日期列、收入或支出金额列，以及余额/对方单位/摘要中的任意两类信息。
+扫描摘要：
+{2}","No se encontró ningún encabezado de detalle de transacción bancaria disponible. Probé sinónimo y coincidencia difusa, el mejor candidato es la fila {0}, campo identificado: {1}. Asegúrese de que el archivo contenga al menos una columna de fecha, una columna de monto de ingresos o gastos y dos datos cualesquiera de información de saldo/socio/resumen. Resumen del escaneo: {2}"
+未知工具：{0},Herramienta desconocida: {0}
+模型没有返回 JSON 对象。,El modelo no devolvió el objeto JSON.
+模型没有返回 JSON 数组。,El modelo no devolvió la matriz JSON.
+生产,Producción
+用户上传的银行交易明细 Excel 文件路径或 URL，例如 /private/files/bank.xlsx,"La ruta del archivo Excel de detalles de la transacción bancaria cargada por el usuario o URL, por ejemplo /private/files/bank.xlsx"
+缺少上传文件路径。,Falta la ruta del archivo de carga.
+要查询的员工名字，例如 '张三',"El nombre del empleado que se va a consultar, como 'Zhang San'"
+调用模型 ID,Llame al modelo ID
+资产,activos
+输入指令，按下发送...,Ingrese el comando y presione enviar...
+返回数量限制,Límite de cantidad devuelta
+选择 AI 平台,Seleccione la plataforma AI
+采购,Compra
+采购入库单,Orden de recibo de compra
+采购发票,Factura de compra
+采购订单,Pedidos de compra
+销售,Venta
+销售出库单,Nota de Entrega
+销售发票,factura de venta
+销售订单,Pedido de Venta
+项目,Proyecto
+🏃‍♂️ 离职交接,🏃‍♂️ Entrega de renuncia
+🏢 固定资产 ▾,🏢 Activos fijos ▾
+🏢 资产盘点,🏢 Inventario de activos
+🏥 财务体检,🏥 Examen físico financiero
+💰 财务会计 ▾,💰 Contabilidad Financiera ▾
+💸 成本追踪,💸 Seguimiento de costos
+📉 资产净值,📉 Valor liquidativo
+📊 销售月报,📊 Informe de ventas mensual
+📍 当前业务上下文,📍Contexto empresarial actual
+📝 供应商报价,📝 Cotización Proveedor
+📥 采购入库,📥 Adquisición y almacenamiento
+📦 低库存预警,📦 Advertencia de stock bajo
+📦 进销存查询 ▾,"📦 Compra, venta y consulta de inventario ▾"
+🖥️ 运行日志监控 (系统状态：正常),🖥️Ejecutar monitoreo de registros (estado del sistema: normal)
+🚀 ERPNext 模块直达,🚀 Acceso directo al módulo ERPNext
+🚚 销售出库,🚚Nota de Entrega
+🚨 智能催款,🚨 Reclamación inteligente
+🛍️ 采购订单,🛍️Pedido de Compra
+🛒 销售订单,🛒Pedido de Venta
+🤖 AI 引擎配置,🤖 Configuración del motor AI
+🧾 财务凭证生成,🧾 Financiero Comprobante Contable generado
+🧾 采购发票,🧾 Factura de compra
+🧾 销售发票,🧾 Factura de venta

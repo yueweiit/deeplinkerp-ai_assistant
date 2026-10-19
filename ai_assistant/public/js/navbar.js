@@ -34,7 +34,7 @@
 		}).on("click", function (e) {
 			e.preventDefault();
 			goToAiChat(e);
-		}).text(BUTTON_LABEL);
+		}).text(__(BUTTON_LABEL));
 
 		$bellBtn.parent().parent().before($link);
 		return true;

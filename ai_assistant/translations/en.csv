@@ -1,0 +1,87 @@
+Base URL 接口地址,Base URL interface address
+Excel 中没有识别到有效的转入/转出交易记录。,No valid transfer in/out transaction was recognized in Excel.
+GLM-4 智谱,GLM-4 Zhipu
+Qwen 通义千问,Qwen Tongyi Qianwen
+ai小助手,ai assistant
+⬇️ Export Data / 导出数据,⬇️ Export Data / Export data
+⬇️ 下载财务报表,⬇️ Download financial statements
+⬇️ 导出数据(Excel),⬇️ Export data (Excel)
+企业智能业务助手,Enterprise Intelligent Business Assistant
+供应商报价,Supplier quotation
+前往库存模块,Go to inventory module
+前往生产模块,Go to production module
+前往资产模块,Go to assets module
+前往采购模块,Go to purchasing module
+前往销售模块,Go to sales module
+前往项目模块,Go to project module
+发送,send
+库存,Inventory
+当前账号无权生成财务凭证报表。,The current account does not have the authority to generate financial report Voucher.
+当前运行环境缺少 openpyxl，无法读取 Excel。请在 bench 环境安装 openpyxl。,The current running environment lacks openpyxl and cannot read Excel. Please install openpyxl in the bench environment.
+当用户上传银行交易明细 Excel 并要求生成财务凭证、科目余额表、资产负债表或利润表时调用。必须把用户消息中的文件路径作为 file_url 传入。,"Called when the user uploads bank transaction details to Excel and requires the generation of financial Voucher, account balance sheet, Balance Sheet or Income Statement. The file path in the user message must be passed in as file_url."
+当用户要求查询公司固定资产、盘点家底、查看资产总值或资产清单时调用。不需要任何参数。,"Called when the user requests to inquire about the company's fixed assets, take stock of property, view total asset value or asset list. No parameters are required."
+当用户要求查询最值钱的资产、资产净值排行榜、资产贬值情况、剩余价值时调用。,"Called when the user requests to query the most valuable assets, net asset value rankings, asset depreciation, and remaining value."
+当用户要求查询某个员工名下资产、离职交接资产核查、员工保管的设备时调用。,"Called when the user requests to query the assets under an employee's name, verification of assets after resignation, and equipment kept by the employee."
+当用户要求查询某个成本中心的花销、支出、烧钱情况或各项开销明细时调用,"Called when the user requests to query the expenses, expenses, cash burn status or various expense details of a cost center"
+当用户要求查询财务体检、公司总资产、总负债、利润、亏损、财务基本盘时调用。不需要任何参数。,"Called when the user requests to query the financial physical examination, the company's total assets, total liabilities, profits, losses, and financial fundamentals. No parameters are required."
+当用户要求查询逾期账款或催款清单时调用,Called when the user requests to query overdue accounts or dunning list
+当用户要求生成销售月报时调用,Called when the user requests to generate a monthly sales report
+当用户询问低库存预警时调用,Called when the user asks about low inventory alerts
+当用户询问供应商报价时调用,Called when the user inquires about Supplier quotation
+当用户询问采购入库时调用,Called when the user inquires about purchasing into the warehouse
+当用户询问采购发票时调用,Called when the user inquires about a purchase invoice
+当用户询问采购订单时调用,Called when the user asks for Purchase Order
+当用户询问销售出库时调用,Called when the user asks for Delivery Note
+当用户询问销售发票时调用,Called when the user asks for a sales invoice
+当用户询问销售订单时调用,Called when the user asks for Sales Order
+您好老板！我是您的专属企业智能助手。全系金刚已就位，请下达指令！,"Hello boss! I am your exclusive enterprise intelligent assistant. All the Vajras are in place, please give the order!"
+成本中心名称，例如 'jd-test',"Cost center name, for example 'jd-test'"
+找不到上传文件：{0},Upload file not found: {0}
+"未找到可用的银行交易明细表头。已尝试同义词匹配和模糊匹配，最佳候选行为第 {0} 行，已识别字段：{1}。
+请确认文件至少包含日期列、收入或支出金额列，以及余额/对方单位/摘要中的任意两类信息。
+扫描摘要：
+{2}","No available bank transaction detail header found. Tried synonym and fuzzy matching, best candidate is row {0}, identified field: {1}. Make sure the file contains at least a date column, an income or expense amount column, and any two of the balance/partner/summary information. Scan summary: {2}"
+未知工具：{0},Unknown tool: {0}
+模型没有返回 JSON 对象。,Model did not return JSON object.
+模型没有返回 JSON 数组。,The model did not return the JSON array.
+生产,Production
+用户上传的银行交易明细 Excel 文件路径或 URL，例如 /private/files/bank.xlsx,"The bank transaction details Excel file path uploaded by the user or URL, for example /private/files/bank.xlsx"
+缺少上传文件路径。,Missing upload file path.
+要查询的员工名字，例如 '张三',"The name of the employee to be queried, such as 'Zhang San'"
+调用模型 ID,Call model ID
+资产,assets
+输入指令，按下发送...,Enter the command and press send...
+返回数量限制,Return quantity limit
+选择 AI 平台,Select AI platform
+采购,Procurement
+采购入库单,Purchase receipt order
+采购发票,Purchase invoice
+采购订单,Purchase Order
+销售,sales
+销售出库单,Delivery Note single
+销售发票,sales invoice
+销售订单,Sales Order
+项目,Project
+🏃‍♂️ 离职交接,🏃‍♂️ Resignation handover
+🏢 固定资产 ▾,🏢 Fixed assets ▾
+🏢 资产盘点,🏢 Asset inventory
+🏥 财务体检,🏥 Financial physical examination
+💰 财务会计 ▾,💰 Financial Accounting ▾
+💸 成本追踪,💸 Cost tracking
+📉 资产净值,📉 Net Asset Value
+📊 销售月报,📊 Monthly sales report
+📍 当前业务上下文,📍 Current business context
+📝 供应商报价,📝 Supplier quotation
+📥 采购入库,📥 Procurement and warehousing
+📦 低库存预警,📦 Low stock warning
+📦 进销存查询 ▾,"📦 Purchase, sale and inventory inquiry ▾"
+🖥️ 运行日志监控 (系统状态：正常),🖥️Run log monitoring (system status: normal)
+🚀 ERPNext 模块直达,🚀 Direct access to ERPNext module
+🚚 销售出库,🚚 Delivery Note
+🚨 智能催款,🚨 Smart dunning
+🛍️ 采购订单,🛍️Purchase Order
+🛒 销售订单,🛒 Sales Order
+🤖 AI 引擎配置,🤖 AI engine configuration
+🧾 财务凭证生成,🧾 Financial Voucher generated
+🧾 采购发票,🧾 Purchase invoice
+🧾 销售发票,🧾 Sales invoice

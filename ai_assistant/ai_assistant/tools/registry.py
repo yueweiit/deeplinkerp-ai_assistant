@@ -1,3 +1,10 @@
+
+try:
+    from frappe import _
+except ImportError:
+    def _(message):
+        return message
+
 from . import business_tools
 from .erp_queries import QUERY_REGISTRY, query_recent_documents_by_name
 
@@ -211,7 +218,7 @@ def _dispatch_custom_tool(function_name, args, context):
             provider_label=context["provider"]["label"],
             called_by_model=True,
         )
-    raise ValueError(f"未知工具：{function_name}")
+    raise ValueError(_("未知工具：{0}").format(function_name))
 
 
 def dispatch_tool(function_name, args, context=None):
@@ -229,4 +236,3 @@ def dispatch_tool(function_name, args, context=None):
 
 def tool_file_prefix(function_name):
     return TOOL_REGISTRY.get(function_name, {}).get("file_prefix", "ERPNext_AI_Assistant")
-

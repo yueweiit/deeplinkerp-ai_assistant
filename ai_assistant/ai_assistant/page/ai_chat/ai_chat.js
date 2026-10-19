@@ -1,5 +1,5 @@
 frappe.pages['ai-chat'].on_page_load = function(wrapper) {
-    var page = frappe.ui.make_app_page({ parent: wrapper, title: '企业智能业务助手', single_column: true });
+    var page = frappe.ui.make_app_page({ parent: wrapper, title: __("企业智能业务助手"), single_column: true });
 
     if (!window.marked) {
         frappe.require("https://cdn.jsdelivr.net/npm/marked/marked.min.js");
@@ -268,9 +268,9 @@ frappe.pages['ai-chat'].on_page_load = function(wrapper) {
     let engineConfig = {
         default_platform: 'qwen',
         platforms: {
-            deepseek: { label: 'DeepSeek', base_url: 'https://api.deepseek.com/v1', model: 'deepseek-chat' },
-            qwen: { label: 'Qwen', base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1', model: 'qwen-plus' },
-            glm4: { label: 'GLM-4', base_url: 'https://open.bigmodel.cn/api/paas/v4', model: 'glm-4' }
+            deepseek: { label: __("DeepSeek"), base_url: 'https://api.deepseek.com/v1', model: 'deepseek-chat' },
+            qwen: { label: __("Qwen"), base_url: 'https://dashscope.aliyuncs.com/compatible-mode/v1', model: 'qwen-plus' },
+            glm4: { label: __("GLM-4"), base_url: 'https://open.bigmodel.cn/api/paas/v4', model: 'glm-4' }
         }
     };
 

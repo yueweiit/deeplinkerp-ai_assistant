@@ -1,3 +1,6 @@
+
+from frappe import _
+
 import json
 import os
 import re
@@ -8,7 +11,7 @@ import requests
 from .account_mapping import allowed_base_accounts
 
 
-def get_ai_assistant_settings():
+def get_ai_assistant_settings(*, include_secrets=True):
     try:
         if not frappe.db.exists("DocType", "AI Assistant Settings"):
             return {}
@@ -17,6 +20,8 @@ def get_ai_assistant_settings():
             return {}
 
         def password(fieldname):
+            if not include_secrets:
+                return None
             if not doc.get(fieldname):
                 return None
             try:
@@ -52,8 +57,9 @@ def get_ai_setting(key):
     return get_ai_assistant_settings().get(key)
 
 
-def get_ai_provider_config(platform):
-    settings = get_ai_assistant_settings()
+def get_ai_provider_config(platform, *, settings=None):
+    if settings is None:
+        settings = get_ai_assistant_settings()
     platform = (platform or settings.get("default_platform") or "qwen").lower()
     providers = {
         "qwen": {
@@ -95,11 +101,11 @@ def get_ai_provider_config(platform):
 
 @frappe.whitelist()
 def get_public_ai_engine_config():
-    settings = get_ai_assistant_settings()
+    settings = get_ai_assistant_settings(include_secrets=False)
     default_platform = (settings.get("default_platform") or "qwen").lower()
     platforms = {}
     for platform in ["qwen", "deepseek", "glm4"]:
-        provider = get_ai_provider_config(platform)
+        provider = get_ai_provider_config(platform, settings=settings)
         platforms[platform] = {
             "label": provider.get("label"),
             "base_url": provider.get("base_url"),
@@ -194,7 +200,7 @@ def parse_model_json_array(content):
         text = text[start:end + 1]
     parsed = json.loads(text)
     if not isinstance(parsed, list):
-        raise ValueError("模型没有返回 JSON 数组。")
+        raise ValueError(_("模型没有返回 JSON 数组。"))
     return parsed
 
 
@@ -209,7 +215,7 @@ def parse_model_json_object(content):
         text = text[start:end + 1]
     parsed = json.loads(text)
     if not isinstance(parsed, dict):
-        raise ValueError("模型没有返回 JSON 对象。")
+        raise ValueError(_("模型没有返回 JSON 对象。"))
     return parsed
 
 
