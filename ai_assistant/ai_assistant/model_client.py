@@ -10,6 +10,18 @@ import requests
 
 from .account_mapping import allowed_base_accounts
 
+DEEPSEEK_BASE_URL = "https://api.deepseek.com"
+DEEPSEEK_DEFAULT_MODEL = "deepseek-flash"
+
+
+class DeepSeekError(ValueError):
+    """A provider failure safe to show without the upstream response or secrets."""
+
+
+def is_official_deepseek_url(value):
+    url = str(value or "").strip().rstrip("/")
+    return url in (DEEPSEEK_BASE_URL, DEEPSEEK_BASE_URL + "/v1")
+
 
 def get_ai_assistant_settings(*, include_secrets=True):
     try:
@@ -45,6 +57,7 @@ def get_ai_assistant_settings(*, include_secrets=True):
             "deepseek_base_url": doc.get("deepseek_base_url"),
             "deepseek_api_key": password("deepseek_api_key"),
             "deepseek_model": doc.get("deepseek_model"),
+            "deepseek_vision_model": doc.get("deepseek_vision_model"),
             "glm_base_url": doc.get("glm_base_url"),
             "glm_api_key": password("glm_api_key"),
             "glm_model": doc.get("glm_model"),
@@ -55,6 +68,24 @@ def get_ai_assistant_settings(*, include_secrets=True):
 
 def get_ai_setting(key):
     return get_ai_assistant_settings().get(key)
+
+
+def get_deepseek_config(settings=None):
+    """The shared provider configuration used by the ERP's DeepSeek consumers."""
+    if settings is None:
+        settings = get_ai_assistant_settings()
+    return {
+        "label": "DeepSeek",
+        "base_url": settings.get("deepseek_base_url") or frappe.conf.get("deepseek_base_url") or os.environ.get("DEEPSEEK_BASE_URL") or DEEPSEEK_BASE_URL,
+        "api_key": settings.get("deepseek_api_key") or frappe.conf.get("deepseek_api_key") or os.environ.get("DEEPSEEK_API_KEY"),
+        "model": settings.get("deepseek_model") or frappe.conf.get("deepseek_model") or os.environ.get("DEEPSEEK_MODEL"),
+        "vision_model": settings.get("deepseek_vision_model") or frappe.conf.get("deepseek_vision_model") or os.environ.get("DEEPSEEK_VISION_MODEL"),
+        "default_model": DEEPSEEK_DEFAULT_MODEL,
+        "config_hint": "Deeplinkerp Settings / AI Model Settings / DeepSeek",
+        "model_config_hint": "Deeplinkerp Settings / AI Model Settings / DeepSeek",
+        "env_hint": "DEEPSEEK_API_KEY",
+        "model_env_hint": "DEEPSEEK_MODEL",
+    }
 
 
 def get_ai_provider_config(platform, *, settings=None):
@@ -73,17 +104,6 @@ def get_ai_provider_config(platform, *, settings=None):
             "env_hint": "DASHSCOPE_API_KEY",
             "model_env_hint": "QWEN_MODEL",
         },
-        "deepseek": {
-            "label": "DeepSeek",
-            "base_url": settings.get("deepseek_base_url") or frappe.conf.get("deepseek_base_url") or os.environ.get("DEEPSEEK_BASE_URL") or "https://api.deepseek.com/v1",
-            "api_key": settings.get("deepseek_api_key") or frappe.conf.get("deepseek_api_key") or os.environ.get("DEEPSEEK_API_KEY"),
-            "model": settings.get("deepseek_model") or frappe.conf.get("deepseek_model") or frappe.conf.get("ai_assistant_model") or os.environ.get("DEEPSEEK_MODEL"),
-            "default_model": "deepseek-chat",
-            "config_hint": "AI Assistant Settings / deepseek_api_key",
-            "model_config_hint": "AI Assistant Settings / deepseek_model",
-            "env_hint": "DEEPSEEK_API_KEY",
-            "model_env_hint": "DEEPSEEK_MODEL",
-        },
         "glm4": {
             "label": "GLM-4",
             "base_url": settings.get("glm_base_url") or frappe.conf.get("glm_base_url") or frappe.conf.get("bigmodel_base_url") or os.environ.get("GLM_BASE_URL") or os.environ.get("BIGMODEL_BASE_URL") or "https://open.bigmodel.cn/api/paas/v4",
@@ -96,7 +116,67 @@ def get_ai_provider_config(platform, *, settings=None):
             "model_env_hint": "GLM_MODEL",
         },
     }
+    if platform == "deepseek":
+        provider = get_deepseek_config(settings)
+        provider["model"] = provider["model"] or frappe.conf.get("ai_assistant_model")
+        return provider
     return providers.get(platform, providers["qwen"])
+
+
+def request_deepseek_json(config, messages, *, max_tokens=700):
+    """Make a bounded JSON request to the official DeepSeek API."""
+    base = str(config.get("base_url") or "").strip().rstrip("/")
+    if not config.get("api_key") or not is_official_deepseek_url(base):
+        raise DeepSeekError(_("请在 Deeplinkerp 设置的 AI 模型设置中配置 DeepSeek 官方接口和密钥。"))
+    try:
+        response = requests.post(
+            base + "/chat/completions",
+            headers={"Authorization": f"Bearer {config['api_key']}"},
+            json={
+                "model": config.get("model") or DEEPSEEK_DEFAULT_MODEL,
+                "messages": messages,
+                "response_format": {"type": "json_object"},
+                "max_tokens": max_tokens,
+                "stream": False,
+                "temperature": 0,
+            },
+            timeout=(4, 18),
+            allow_redirects=False,
+        )
+    except requests.RequestException:
+        raise DeepSeekError(_("DeepSeek 连接超时或暂时不可用。")) from None
+    if response.status_code in (401, 403):
+        raise DeepSeekError(_("DeepSeek 未授权，请检查统一配置的 API 密钥。"))
+    if response.status_code == 402:
+        raise DeepSeekError(_("DeepSeek 账户余额不足。"))
+    if response.status_code == 429:
+        raise DeepSeekError(_("DeepSeek 请求频繁，请稍后重试。"))
+    if response.status_code != 200:
+        raise DeepSeekError(_("DeepSeek 暂时无法完成识别。"))
+    try:
+        choice = response.json()["choices"][0]
+        if choice["finish_reason"] == "stop":
+            return parse_model_json_object(choice["message"]["content"])
+    except (IndexError, KeyError, TypeError, ValueError):
+        pass
+    raise DeepSeekError(_("DeepSeek 没有返回有效的识别结果。"))
+
+
+@frappe.whitelist(methods=["POST"])
+def test_deepseek_connection():
+    frappe.only_for("System Manager")
+    config = get_deepseek_config()
+    try:
+        result = request_deepseek_json(
+            config,
+            [{"role": "user", "content": 'Return the JSON object {"ok": true}.'}],
+            max_tokens=64,
+        )
+    except DeepSeekError as exc:
+        frappe.throw(str(exc))
+    if result.get("ok") is not True:
+        frappe.throw(_("DeepSeek 没有返回有效的识别结果。"))
+    return {"model": config.get("model") or DEEPSEEK_DEFAULT_MODEL}
 
 
 @frappe.whitelist()
