@@ -19,6 +19,7 @@
   "deepseek_base_url",
   "deepseek_api_key",
   "deepseek_model",
+  "deepseek_vision_model",
   "glm_section",
   "glm_base_url",
   "glm_api_key",
@@ -108,7 +109,12 @@
    "fieldname": "deepseek_model",
    "fieldtype": "Data",
    "label": "Model",
-   "default": "deepseek-chat"
+   "default": "deepseek-flash"
+  },
+  {
+   "fieldname": "deepseek_vision_model",
+   "fieldtype": "Data",
+   "label": "DeepSeek Vision Model"
   },
   {
    "fieldname": "glm_section",
@@ -135,7 +141,7 @@
  ],
  "issingle": 1,
  "links": [],
- "modified": "2026-06-17 00:00:00.000000",
+ "modified": "2026-11-27 11:33:00.000000",
  "modified_by": "Administrator",
  "module": "AI Assistant",
  "name": "AI Assistant Settings",

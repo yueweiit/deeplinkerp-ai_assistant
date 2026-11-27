@@ -2,7 +2,7 @@ AI Assistant,Asistente de IA
 Deeplinkerp,Deeplinkerp
 Enterprise AI Business Assistant,Asistente empresarial de IA
 企业智能业务助手,Asistente empresarial de IA
-AI Assistant Settings,Configuración del asistente de IA
+AI Assistant Settings,Configuración de modelos de IA
 Configure OpenAI-compatible model providers for DeeplinkERP AI Assistant. Values here override site_config and environment variables.,Configure proveedores de modelos compatibles con OpenAI para DeeplinkERP AI Assistant. Estos valores tienen prioridad sobre site_config y las variables de entorno.
 Enabled,Habilitado
 "If disabled, AI Assistant falls back to site_config/common_site_config and environment variables.","Si se deshabilita, el asistente de IA usará site_config/common_site_config y variables de entorno."
@@ -113,3 +113,7 @@ qwen,qwen
 🧾 财务凭证生成,🧾 Financiero Comprobante Contable generado
 🧾 采购发票,🧾 Factura de compra
 🧾 销售发票,🧾 Factura de venta
+"DeepSeek settings are shared by bank statement import, overseas costing, and AI Assistant.","La importación bancaria, los costos en el extranjero y el asistente de IA comparten esta configuración de DeepSeek."
+Test DeepSeek,Probar conexión de DeepSeek
+DeepSeek connection successful,Conexión de DeepSeek correcta
+DeepSeek Vision Model,Modelo visual de DeepSeek
