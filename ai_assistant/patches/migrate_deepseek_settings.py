@@ -29,7 +29,7 @@ def execute():
         return
     values = {"deepseek_api_key": "********", "deepseek_base_url": legacy_base}
     legacy_model = frappe.conf.get("overseas_cost_ai_model") or os.environ.get("OVERSEAS_COST_AI_MODEL")
-    if legacy_model and saved.get("deepseek_model") in (None, "", "deepseek-chat"):
+    if legacy_model:
         values["deepseek_model"] = legacy_model
     vision = frappe.conf.get("overseas_cost_ai_vision_model") or os.environ.get("OVERSEAS_COST_AI_VISION_MODEL")
     if vision and not saved.get("deepseek_vision_model"):

@@ -15,7 +15,7 @@ def test_migrates_production_overseas_key_to_encrypted_single_once(monkeypatch):
         "overseas_cost_ai_model": "deepseek-v4-flash",
         "overseas_cost_ai_vision_model": "deepseek-v4-flash-vision-exp",
     }
-    saved = {"deepseek_model": "deepseek-chat"}
+    saved = {"deepseek_model": "deepseek-flash"}
     db = Mock()
     db.get_singles_dict.return_value = saved
     db.set_single_value.side_effect = lambda _, values: saved.update(values)
